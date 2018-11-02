@@ -17,6 +17,7 @@
 このプロジェクトは Apache 2.0 ライセンスを使用しております。
 Copyright (c) 2018 voyage
 <br>
+<br>
 
 #### 開発環境
 - Windows 10 (64bit)
@@ -27,4 +28,5 @@ Copyright (c) 2018 voyage
 
 #### 参考
 順次追加していきます。
+<br>
 <br>
