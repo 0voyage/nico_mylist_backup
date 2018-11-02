@@ -1,6 +1,7 @@
 # nico_mylist_backup
 ニコニコ動画のマイリストをブックマークにバックアップするGoogle Chrome拡張機能を作ります。名称は未定です。
 <br>
+<br>
 
 #### 利用方法
 [Chrome ウェブストア](https://chrome.google.com/webstore/category/extensions?hl=ja)にて配布予定です。
@@ -16,7 +17,6 @@
 このプロジェクトは Apache 2.0 ライセンスを使用しております。
 Copyright (c) 2018 voyage
 <br>
-
 
 #### 開発環境
 - Windows 10 (64bit)
