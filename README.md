@@ -1,0 +1,2 @@
+# nico_mylist_backup
+ニコニコ動画のマイリストをブックマークにバックアップするGoogle Chrome拡張機能を作ります。
