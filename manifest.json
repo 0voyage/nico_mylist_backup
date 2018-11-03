@@ -21,7 +21,6 @@ limitations under the License.
 	"manifest_version": 2,
 	"name": "NicoNico MyList Backup",
 	"version": "1",
-	"default_locale": "ja",
 	"description": "ニコニコ動画のマイリストをブックマークにバックアップします。",
 	"browser_action": {
 		"default_title": "NicoNico MyList Backup"
