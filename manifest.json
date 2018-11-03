@@ -17,15 +17,11 @@ limitations under the License.
 
 {
 	/*https://developer.chrome.com/extensions/getstarted*/
+	/*https://developer.chrome.com/extensions/manifest*/
+	"manifest_version": 2,
 	"name": "NicoNico MyList Backup",
-	"description": "This extension lets you create a set of bookmarks from your MyList on NicoNico.",
-	"version": "0.1",
-	"permissions": [
-		"bookmarks",
-		"activeTab" /* インストール時の警告が減る*/
-		/*"tabs",*/
-		/*"http://..."*/
-	],
+	"version": "1",
+	"description": "ニコニコ動画のマイリストをブックマークにバックアップします。",
 	"browser_action": {
 		"default_title": "NicoNico MyList Backup"
 	},
@@ -33,5 +29,10 @@ limitations under the License.
 		"scripts": ["background.js"],
 		"persistent": false
 	},
-	"manifest_version": 2
+	"permissions": [
+		"bookmarks",
+		"activeTab" /* インストール時の警告が減る*/
+		/*"tabs",*/
+		/*"http://..."*/
+	]
 }

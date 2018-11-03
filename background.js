@@ -15,49 +15,41 @@ limitations under the License.
 
 
 
-// Called when the icon is clicked
+// When the icon is clicked
 chrome.browserAction.onClicked.addListener(function(tab) {
 	window.alert('バックアップを開始します。');
-	// Regex-pattern to check URLs against.
-	// It matches URLs like: http[s]://[...]stackoverflow.com[...]
-	/* var nicovideoURL = /^https?:\/\/(?:[^./?#]+\.)?stackoverflow\.com/;
-	if (nicovideoURL.test(tab.url)) {
-		//createANewFolder();
-		chrome.tabs.executeScript(null, {file: "content.js"});
-	} */
 	chrome.tabs.executeScript(null, {file: "content.js"});
 });
-// When it receives a message
+
+// When background.js receives a message
 chrome.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
-		extractInfo(request);
+		extractInfoFromMylist(request);
 	}
 );
-// Extract Info
-function extractInfo(jsonData) {
-	jsonData = JSON.parse(jsonData);
-	var mylistName = jsonData.mylistName;
-	var urlArray = jsonData.urlArray;
-	window.alert("「" + mylistName + "」フォルダが、「その他のブックマーク」内に作成されます。");
-	createANewFolder(mylistName, urlArray);
+
+function extractInfoFromMylist(jsonData) {
+	da = JSON.parse(jsonData);
+	window.alert("「" + da.mylistName + "」フォルダが、「その他のブックマーク」内に作成されます。");
+	createANewBookmarkFolder(da.mylistName, da.videoArray);
 }
-// Create a new folder in the Other Bookmarks folder
-function createANewFolder(mylistName, urlArray){
+
+function createANewBookmarkFolder(mylistName, videoArray){
 	chrome.bookmarks.create(
 		{'title': mylistName},
 		function(newFolder) {
-			addBookmarks(newFolder, urlArray);
+			addBookmarksToTheFolder(newFolder, videoArray);
 		}
 	);
 }
-// Create new bookmarks
-function addBookmarks(bookmarkTreeNode, urlArray) {
-	for (var i=0; i<urlArray.length; i++){
+
+function addBookmarksToTheFolder(bookmarkTreeNode, videoArray) {
+	for (var i=0; i<videoArray.length; i++){
 		// For each video...
 		chrome.bookmarks.create(
-	 		{'parentId': bookmarkTreeNode.id, "title": urlArray[i].videoTitle, 'url': urlArray[i].videoURL},
+	 		{'parentId': bookmarkTreeNode.id, "title": videoArray[i].title, 'url': videoArray[i].url},
 	 		function(newBookmark) {
-				if (newBookmark.index+1===urlArray.length) {
+				if (newBookmark.index+1===videoArray.length) {
 					window.alert(newBookmark.index+1 + '個のブックマークが追加されました。');
 				} else {}
 	 		}

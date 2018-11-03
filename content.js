@@ -19,14 +19,13 @@ limitations under the License.
 // Extract URLs from a MyList page & Send them to background.js
 
 var mylistName = "";
-var urlArray = [];
+var videoArray = [];
 var finalArray = [];
 
-// Extract MyList Name
-// There is no <span> in the Temporary MyList page, so it uses only one children[0]
+// Find mylist name
 mylistName = document.getElementById("myContHead").children[0].innerText;
 
-// Video titles & URLs
+// List video titles & URLs
 var videos = document.getElementsByClassName("mylistVideo");
 for (var i=0; i<videos.length; i++){
 	// For each video <a> tag...
@@ -37,11 +36,11 @@ for (var i=0; i<videos.length; i++){
 	var videoURL = "http://www.nicovideo.jp" + videoInfo.getAttribute('href');
 
 	// Set in the array
-	urlArray.push({"videoTitle": videoTitle, "videoURL": videoURL});
+	videoArray.push({"title": videoTitle, "url": videoURL});
 }
 
 // Combine
-finalArray = {"mylistName": mylistName, "urlArray": urlArray};
+finalArray = {"mylistName": mylistName, "videoArray": videoArray};
 
-// Send to background.js
+// Send it to background.js
 chrome.runtime.sendMessage(JSON.stringify(finalArray));
